@@ -21,7 +21,7 @@ const StartEditButton = ({ setIsEditing }) => {
 }
 
 const EditSection = ({ todo, setTodoList, setIsEditing }) => {
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState(todo.content);
   return (
     <>
       <input
@@ -49,13 +49,19 @@ const EditSection = ({ todo, setTodoList, setIsEditing }) => {
 const Todo = ({ todo, setTodoList }) => {
   const [isEditing, setIsEditing] = useState(false)
 
+  if (isEditing) {
+    return (
+      <li>
+        <EditSection todo={todo} setTodoList={setTodoList} setIsEditing={setIsEditing} />
+      </li>
+    )
+  }
+
   return (
     <li>
       {todo.content}
-
-      {isEditing && <EditSection todo={todo} setTodoList={setTodoList} setIsEditing={setIsEditing} />}
-      {!isEditing && <StartEditButton setIsEditing={setIsEditing} />}
-      {!isEditing && <DeleteButton todo={todo} setTodoList={setTodoList} />}
+      <StartEditButton setIsEditing={setIsEditing} />
+      <DeleteButton todo={todo} setTodoList={setTodoList} />
     </li>
   );
 }
