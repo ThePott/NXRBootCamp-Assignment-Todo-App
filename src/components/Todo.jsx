@@ -72,8 +72,8 @@ const Todo = ({ todo, setTaskList }) => {
 
   return (
     <li>
-      <input type="checkbox" value={todo.isDone} onChange={handleCheck}></input>
-      <p className="content">{todo.content}</p>
+      <input type="checkbox" checked={todo.isDone} onChange={handleCheck}></input>
+      <p className="content" onClick={() => console.log(todo.isDone)}>{todo.content}</p>
       <StartEditButton setIsEditing={setIsEditing} />
       <DeleteButton todo={todo} setTaskList={setTaskList} />
     </li>
