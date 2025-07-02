@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import TodoList from "./components/TodoList";
 import TodoInput from "./components/TodoInput";
+import Header from "./components/Header"
 
 const App = () => {
   const [taskList, setTaskList] = useState([
@@ -16,6 +17,7 @@ const App = () => {
   console.log("---- re-rendered:", taskList)
   return (
     <>
+      <Header />
       <TodoList todoList={doneList} setTaskList={setTaskList} />
       <hr />
       <TodoList todoList={todoList} setTaskList={setTaskList} />
