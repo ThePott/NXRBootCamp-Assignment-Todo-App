@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const TodoInput = ({ todoList, setTodoList }) => {
+const TodoInput = ({ setTaskList }) => {
   const [inputValue, setInputValue] = useState("");
 
   return (
@@ -11,9 +11,8 @@ const TodoInput = ({ todoList, setTodoList }) => {
       />
       <button
         onClick={() => {
-          const newTodo = { id: Number(new Date()), content: inputValue };
-          const newTodoList = [...todoList, newTodo];
-          setTodoList(newTodoList);
+          const newTask = { id: Number(new Date()), content: inputValue, isDone: false };
+          setTaskList((prev) => [...prev, newTask]);
           setInputValue("");
         }}
       >

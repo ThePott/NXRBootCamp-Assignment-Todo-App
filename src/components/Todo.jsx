@@ -1,15 +1,17 @@
 import { useState } from "react";
 
-const DeleteButton = ({ todo, setTodoList }) => {
-  <button
-    onClick={() => {
-      setTodoList((prev) => {
-        return prev.filter((el) => el.id !== todo.id);
-      });
-    }}
-  >
-    삭제
-  </button>
+const DeleteButton = ({ todo, setTaskList }) => {
+  return (
+    <button
+      onClick={() => {
+        setTaskList((prev) => {
+          return prev.filter((el) => el.id !== todo.id);
+        });
+      }}
+    >
+      삭제
+    </button>
+  )
 }
 
 const StartEditButton = ({ setIsEditing }) => {
@@ -20,7 +22,7 @@ const StartEditButton = ({ setIsEditing }) => {
   )
 }
 
-const EditSection = ({ todo, setTodoList, setIsEditing }) => {
+const EditSection = ({ todo, setTaskList, setIsEditing }) => {
   const [inputValue, setInputValue] = useState(todo.content);
   return (
     <>
@@ -31,7 +33,7 @@ const EditSection = ({ todo, setTodoList, setIsEditing }) => {
 
       <button
         onClick={() => {
-          setTodoList((prev) =>
+          setTaskList((prev) =>
             prev.map((el) =>
               el.id === todo.id ? { ...el, content: inputValue } : el
             )
@@ -46,22 +48,33 @@ const EditSection = ({ todo, setTodoList, setIsEditing }) => {
   )
 }
 
-const Todo = ({ todo, setTodoList }) => {
+
+const Todo = ({ todo, setTaskList }) => {
   const [isEditing, setIsEditing] = useState(false)
+
+  const handleCheck = () => {
+    setTaskList((prev) => {
+      const newTaskList = prev.map(
+        (el) => el.id === todo.id ? { ...el, isDone: !el.isDone } : el
+      )
+      return newTaskList
+    })
+  }
 
   if (isEditing) {
     return (
       <li>
-        <EditSection todo={todo} setTodoList={setTodoList} setIsEditing={setIsEditing} />
+        <EditSection todo={todo} setTaskList={setTaskList} setIsEditing={setIsEditing} />
       </li>
     )
   }
 
   return (
     <li>
+      <input type="checkbox" value={todo.isDone} onChange={handleCheck}></input>
       {todo.content}
       <StartEditButton setIsEditing={setIsEditing} />
-      <DeleteButton todo={todo} setTodoList={setTodoList} />
+      <DeleteButton todo={todo} setTaskList={setTaskList} />
     </li>
   );
 }
