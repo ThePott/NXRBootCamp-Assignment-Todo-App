@@ -3,6 +3,7 @@ import "./App.css";
 import TodoList from "./components/TodoList";
 import TodoInput from "./components/TodoInput";
 import Header from "./components/Header"
+import Divider from "./components/Divider"
 
 const App = () => {
   const [taskList, setTaskList] = useState([
@@ -16,14 +17,17 @@ const App = () => {
 
   console.log("---- re-rendered:", taskList)
   return (
-    <>
+    <div id="app-boundary">
       <Header />
-      <TodoList todoList={doneList} setTaskList={setTaskList} />
-      <hr />
-      <TodoList todoList={todoList} setTaskList={setTaskList} />
-      <hr />
+      <main>
+        {doneList.length > 0 && <Divider text="완료" />}
+        <TodoList todoList={doneList} setTaskList={setTaskList} />
+        <Divider text="할 것" />
+        <TodoList todoList={todoList} setTaskList={setTaskList} />
+      </main>
+      <Divider />
       <TodoInput setTaskList={setTaskList} />
-    </>
+    </div>
   );
 }
 

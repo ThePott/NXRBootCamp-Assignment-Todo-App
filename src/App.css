@@ -1,3 +1,9 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -40,3 +46,60 @@
 .read-the-docs {
   color: #888;
 }
+
+div#app-boundary {
+  padding: 24px;
+  border-radius: 24px;
+  border: 1px solid hsl(0 0% 30%);
+
+  width: 448px;
+  height: 640px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+}
+
+header {
+  flex-grow: 1;
+}
+header div {
+  display: flex;
+  align-items: end;
+  gap: 24px;
+}
+
+main {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  scrollbar-color: hsl(0 0% 30%) transparent;
+}
+
+div.divider {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+div.divider div {
+  height: 1px;
+  background-color: hsl(0 0% 30%);
+  flex-grow: 1;
+}
+
+li {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+li p.content {
+  flex-grow: 1;
+  text-align: start;
+}
+
+input.long {
+  flex-grow: 1;
+}
+

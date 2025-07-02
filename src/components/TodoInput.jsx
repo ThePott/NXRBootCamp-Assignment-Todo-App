@@ -4,8 +4,9 @@ const TodoInput = ({ setTaskList }) => {
   const [inputValue, setInputValue] = useState("");
 
   return (
-    <>
+    <li>
       <input
+        className="long"
         value={inputValue}
         onChange={(event) => setInputValue(event.target.value)}
       />
@@ -18,7 +19,7 @@ const TodoInput = ({ setTaskList }) => {
       >
         추가하기
       </button>
-    </>
+    </li>
   );
 }
 

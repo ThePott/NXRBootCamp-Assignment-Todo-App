@@ -8,12 +8,14 @@ const Header = () => {
   const weekDayArray = ["일", "월", "화", "수", "목", "금", "토"]
   return (
     <header>
-      <h1>
-        할 것
-      </h1>
-      <p>
-        {`${month}월 ${date}일 (${weekDayArray[weekdayIndex]})`}
-      </p>
+      <div>
+        <h1>
+          아주 작은 일
+        </h1>
+        <p>
+          {`${month}월 ${date}일 (${weekDayArray[weekdayIndex]})`}
+        </p>
+      </div>
     </header>
   )
 }

@@ -27,6 +27,7 @@ const EditSection = ({ todo, setTaskList, setIsEditing }) => {
   return (
     <>
       <input
+      className="long"
         value={inputValue}
         onChange={(event) => setInputValue(event.target.value)}
       />
@@ -72,7 +73,7 @@ const Todo = ({ todo, setTaskList }) => {
   return (
     <li>
       <input type="checkbox" value={todo.isDone} onChange={handleCheck}></input>
-      {todo.content}
+      <p className="content">{todo.content}</p>
       <StartEditButton setIsEditing={setIsEditing} />
       <DeleteButton todo={todo} setTaskList={setTaskList} />
     </li>
